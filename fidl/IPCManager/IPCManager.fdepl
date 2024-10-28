@@ -1,0 +1,51 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
+import "IPCManager.fidl"
+
+
+define org.genivi.commonapi.someip.deployment for interface commonapi.IPCManager {
+        SomeIpServiceID = 1004
+
+        method setSensorRpm {
+                SomeIpMethodID = 400
+        }
+        method setBatteryLevel {
+                SomeIpMethodID = 401
+        }
+        method setGearMode {
+                SomeIpMethodID = 402
+        }
+        method setDirection {
+                SomeIpMethodID = 403
+        }
+        method setLight {
+                SomeIpMethodID = 404
+        }
+        method setThrottle {
+                SomeIpMethodID = 405
+        }
+        method setSteering {
+                SomeIpMethodID = 406
+        }
+        method setDistance {
+                SomeIpMethodID = 407
+        }
+        method getGearMode {
+        	SomeIpMethodID = 408
+        }
+        method getDirection {
+        	SomeIpMethodID = 409
+        }
+        method getLight {
+        	SomeIpMethodID = 410
+        }
+        method getSteering {
+        	SomeIpMethodID = 411
+        }
+}
+define org.genivi.commonapi.someip.deployment for provider as Service {
+        instance commonapi.IPCManager {
+                InstanceId = "IPCManager"
+                SomeIpInstanceID = 10004
+        }
+}
+

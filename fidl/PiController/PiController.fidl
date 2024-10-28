@@ -1,0 +1,7 @@
+package commonapi
+
+
+interface PiController {
+  version {major 1 minor 0}
+}
+

@@ -1,0 +1,14 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-4-SOMEIP_deployment_spec.fdepl"
+import "PiracerSender.fidl"
+
+
+define org.genivi.commonapi.someip.deployment for interface commonapi.PiSender {
+        SomeIpServiceID = 1002
+}
+define org.genivi.commonapi.someip.deployment for provider as Service {
+        instance commonapi.PiSender {
+                InstanceId = "PiSender"
+                SomeIpInstanceID = 10002
+        }
+}
+

@@ -1,0 +1,16 @@
+package commonapi
+
+
+interface IVICompositor {
+  version {major 1 minor 0}
+
+  method setGear {
+    in {
+      UInt16 Gear
+    }
+    out {
+      String message
+    }
+  }
+}
+
