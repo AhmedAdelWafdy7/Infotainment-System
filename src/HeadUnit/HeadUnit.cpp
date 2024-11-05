@@ -1,5 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include <QCursor>
+
 #include "scenehelper.h"
 #include "Infotainment/control/hvachandler.h"
 #include "Infotainment/control/audiocontroller.h"

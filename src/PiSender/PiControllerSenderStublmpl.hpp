@@ -2,12 +2,12 @@
 #define PICONTROLLERSENDERSTUBIMPL_HPP
 
 #include <CommonAPI/CommonAPI.hpp>
-#include <v1/commonapi/PiControllerSenderStubDefault.hpp>
+#include <v1/commonapi/PiSenderStubDefault.hpp>
 
-class PiControllerSenderStubImpl : public v1_0::commonapi::PiControllerSenderStubDefault {
-    public:
-        PiControllerSenderStubImpl();
-        virtual ~PiControllerSenderStubImpl();
+class PiControllerSenderStubImpl : public v1::commonapi::PiSenderStubDefault {
+public:
+    PiControllerSenderStubImpl();
+    virtual ~PiControllerSenderStubImpl();
 };
 
 

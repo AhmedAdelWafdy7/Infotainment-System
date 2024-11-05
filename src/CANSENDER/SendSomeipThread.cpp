@@ -26,17 +26,17 @@ using namespace v1_0::commonapi;
  */
 void *SendSomeipThread(void *arg) {
 
-    std::shared_ptr<CommonAPI::Runtime> runtime = CommonAPI::Runtime::get(); // Get the runtime
+    std::shared_ptr<CommonAPI::Runtime> runtime;
     std::shared_ptr<CANSenderStubImpl> CANSenderService;
-    std::shared_ptr<IPCManagerProxy<>> IPCMangerTargetProxy; // Create a new instance of the proxy
+    std::shared_ptr<IPCManagerProxy<>> IPCManagerTargetProxy;
+    
+    runtime = CommonAPI::Runtime::get();
+    CANSenderService = std::make_shared<CANSenderStubImpl>();
+    runtime->registerService("local", "CANSender", CANSenderService);
 
+    IPCManagerTargetProxy = runtime->buildProxy<IPCManagerProxy>("local", "IPCManager"); // Build the proxy
 
-    CANSenderService = std::make_shared<CANSenderStubImpl>(); // Create a new instance of the service
-    runtime->registerService("CANSenderService", CANSenderService); // Register the service
-
-    IPCMangerTargetProxy = runtime->buildProxy<IPCManagerProxy>("local", "IPCManager"); // Build the proxy
-
-    commonAPI::CallStatus callStatus;
+    CommonAPI::CallStatus callStatus;
 
     std::string returnMessage;
 
@@ -56,7 +56,7 @@ void *SendSomeipThread(void *arg) {
 
     while(1){
         // Get the current speed from the buffer
-        pthread_muxtex_lock(&speedBufferMutex);
+        pthread_mutex_lock(&speedBufferMutex);
         currentIndex = speedBufferIndex - 1;
 
         if(currentIndex < 0){
@@ -85,17 +85,17 @@ void *SendSomeipThread(void *arg) {
 
         uint16_t Kf_speed_sensor_rpm = (uint16_t)round(speed_sensor_renewed_e[0]);
 
-        IPC_MangerTargetProxy->setSensorRpm(Kf_speed_sensor_rpm, callStatus,returnMessage);
+        IPCManagerTargetProxy->setSensorRpm(Kf_speed_sensor_rpm, callStatus,returnMessage);
 
         //read distance from the buffer
-        pthread_mutex_lock(&distanceBufferMutex);
-        currentIndex = distanceBufferIndex - 1;
+        pthread_mutex_lock(&DistanceBufferMutex);
+        currentIndex = DistanceBufferIndex - 1;
         if(currentIndex < 0){
             currentIndex = DISTANCE_BUFFER_SIZE - 1;
         }
 
-        uint16_t distance_sensor_cm = distanceBuffer[currentIndex];
-        pthread_mutex_unlock(&distanceBufferMutex);
+        uint16_t distance_sensor_cm = DistanceBuffer[currentIndex];
+        pthread_mutex_unlock(&DistanceBufferMutex);
 
         IPCManagerTargetProxy->setDistance(distance_sensor_cm, callStatus, returnMessage);
         usleep(300000); //sleep for 300ms
@@ -105,65 +105,66 @@ void *SendSomeipThread(void *arg) {
 }
 
 
-void KalmanFilter(double measuredstate,double estmiation[SIZE],double letterP[SIZE][SIZE], double dt, double renewed_e[SIZE], double renewed_P[SIZE][SIZE]){
+void KalmanFilter(double measuredstate, double estimation[SIZE], double letterP[SIZE][SIZE], double dt, double renewed_e[SIZE], double renewed_P[SIZE][SIZE]) 
+{
+    // Kalman filter constants and parameters
+    double letterA[SIZE][SIZE] = {{1, dt}, {0, 1}};
+    double letterQ[SIZE][SIZE] = {{100, 0}, {0, 100}};
+    double letterH[MEASURE_SIZE][SIZE] = {{1, 0}};
+    double letterR[MEASURE_SIZE] = {25};
 
-// kalman filter parameters
-
-    double A[SIZE][SIZE] = {{1, dt}, {0, 1}};
-
-    double Q[SIZE][SIZE] = {{100, 0}, {0, 100}};
-    double H[MEASURE_SIZE][SIZE] = {{1, 0}};
-    double R[MEASURE_SIZE][MEASURE_SIZE] = {25};
-
-    // predict error covariance
-    double predicted_e[SIZE];   //predicted state
-    double temp_result[SIZE][SIZE]; //temporary result
-
-    matrix_multiplication(A, (double (*) [SIZE])estmiation, temp_result);
-    for(int i = 0; i < SIZE; i++){
+    // 1. Predict the state and error covariance
+    double predicted_e[SIZE];
+    double temp_result[SIZE][SIZE];
+    matrix_multiplication(letterA, (double (*)[SIZE])estimation, temp_result);
+    for (int i = 0; i < SIZE; i++)
+    {
         predicted_e[i] = temp_result[i][0];
     }
-
-    double predicted_P[SIZE][SIZE]; //predicted error covariance
-    matrix_multiplication(A, letterP, predicted_P);
-    for(int i = 0; i < SIZE; i++){
-        for(int j = 0; j < SIZE; j++){
-            predicted_P[i][j] += Q[i][j];
+    double predicted_P[SIZE][SIZE];
+    matrix_multiplication(letterA, letterP, predicted_P);
+    for (int i = 0; i < SIZE; i++) 
+    {
+        for (int j = 0; j < SIZE; j++) 
+        {
+            predicted_P[i][j] += letterQ[i][j];
         }
     }
 
-    // Kalman gain
+    // 2. Calculate Kalman Gain
     double K[SIZE];
-    double denominator = (H[0][0] * predicted_P[0][0] + H[0][1] * predicted_P[1][0]) * H[0][0] 
-                         + (H[0][0] * predicted_P[0][1] + H[0][1] * predicted_P[1][1]) * H[0][1] + R[0];
-
-    for(int i = 0; i < SIZE; i++){
-        K[i] = (predicted_P[i][0] * H[0][0] + predicted_P[i][1] * H[0][1]) / denominator;
+    double denominator = (letterH[0][0] * predicted_P[0][0] + letterH[0][1] * predicted_P[1][0]) * letterH[0][0] 
+                         + (letterH[0][0] * predicted_P[0][1] + letterH[0][1] * predicted_P[1][1]) * letterH[0][1] + letterR[0];
+    for (int i = 0; i < SIZE; i++) 
+    {
+        K[i] = (predicted_P[i][0] * letterH[0][0] + predicted_P[i][1] * letterH[0][1]) / denominator;
     }
 
-    //update estimation with measurement
-    double y = measuredstate - (H[0][0] * predicted_e[0] + H[0][1] * predicted_e[1]);
-    for(int i = 0; i < SIZE; i++){
+    // 3. Update the estimation
+    double y = measuredstate - (letterH[0][0] * predicted_e[0] + letterH[0][1] * predicted_e[1]);
+    for (int i = 0; i < SIZE; i++) 
+    {
         renewed_e[i] = predicted_e[i] + K[i] * y;
     }
 
-    //update error covariance
+    // 4. Update the error covariance
     double I[SIZE][SIZE] = {{1, 0}, {0, 1}};
     double KH[SIZE][SIZE];
-    for(int i = 0;i<SIZE;i++){
-        for(int j = 0;j<SIZE;j++){
-            KH[i][j] = K[i] * H[0][j];
+    for (int i = 0; i < SIZE; i++) 
+    {
+        for (int j = 0; j < SIZE; j++) 
+        {
+            KH[i][j] = K[i] * letterH[0][j];
         }
     }
-
-    for(int i = 0; i < SIZE; i++){
-        for(int j = 0; j < SIZE; j++){
+    for (int i = 0; i < SIZE; i++) 
+    {
+        for (int j = 0; j < SIZE; j++) 
+        {
             renewed_P[i][j] = (I[i][j] - KH[i][j]) * predicted_P[i][j];
         }
     }
-
 }
-
 
 void matrix_multiplication(double A[SIZE][SIZE], double B[SIZE][SIZE], double result[SIZE][SIZE]){
     for(int i = 0; i < SIZE; i++){

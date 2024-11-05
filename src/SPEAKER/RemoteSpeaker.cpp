@@ -18,11 +18,11 @@ int main(int argc, char *argv[]) {
 
     std::shared_ptr<IPCManagerProxy<>> IPCManagerTargetProxy = runtime->buildProxy<IPCManagerProxy>("local", "IPCManager"); // Build the proxy
 
-    commonAPI::CallStatus callStatus;
+    CommonAPI::CallStatus callStatus;
     std::string returnMessage;
 
     usleep(1000000);
-    IPCManagerTargetProxy->SetGearMode("RemoteSpeaker", callStatus, returnMessage);
+    IPCManagerTargetProxy->getGearMode("RemoteSpeaker", callStatus, returnMessage);
     while(1){
         if(GearBuffer == 1){
             if(DistanceBuffer < 15){

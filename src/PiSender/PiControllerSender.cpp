@@ -17,10 +17,10 @@ int main(){
 
     PiControllerClass piController;
 
-    commonAPI::CallStatus callStatus;
+    CommonAPI::CallStatus callStatus;
     std::string returnMessage;
     while(1){
-        IPCManagerTargetProxy->SetBatteryLevel(piController.GetBatteryLevel() , callStatus, returnMessage);
+        IPCManagerTargetProxy->setBatteryLevel(piController.getBatteryLevel() , callStatus, returnMessage);
         usleep(500000);
     }
 

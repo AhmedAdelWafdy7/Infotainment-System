@@ -21,67 +21,67 @@ PiContollerClass::~PiContollerClass(){
     Py_Finalize();
 }
 
-void PiContollerClass::SetSensorRpm(uint16_t _sensorRpm){
+void PiContollerClass::setSensorRpm(uint16_t _sensorRpm){
     sensorRpm = _sensorRpm;
 
     return;
 }
 
-void PiControllerClass::SetGearMode(uint16_t _gearMode){
+void PiContollerClass::setGearMode(uint16_t _gearMode){
     gearMode = _gearMode;
 
     return;
 }
 
-void PiControllerClass::SetDirection(uint16_t _direction){
+void PiContollerClass::setDirection(uint16_t _direction){
     direction = _direction;
 
     return;
 }
 
-void PiControllerClass::SetLight(std::string _light){
+void PiContollerClass::setLight(std::string _light){
     light = _light;
 
     return;
 }
 
-void PiControllerClass::SetFreeDirection(bool _freeDirection){
+void PiContollerClass::setFreeDirection(bool _freeDirection){
     freeDirection = _freeDirection;
 
     return;
 }
 
-void PiControllerClass::SetSteering(double _steering){
+void PiContollerClass::setSteering(double _steering){
     steering = _steering;
 
     return;
 }
 
-uint16_t PiControllerClass::GetSensorRpm(){
+uint16_t PiContollerClass::getSensorRpm(){
     return sensorRpm;
 }
 
-uint16_t PiControllerClass::GetGearMode(){
+uint16_t PiContollerClass::getGearMode(){
     return gearMode;
 }
 
-uint16_t PiControllerClass::GetDirection(){
+uint16_t PiContollerClass::getDirection(){
     return direction;
 }
 
-std::string PiControllerClass::GetLight(){
+std::string PiContollerClass::getLight(){
     return light;
 }
 
-bool PiControllerClass::GetFreeDirection(){
+bool PiContollerClass::getFreeDirection(){
     return freeDirection;
 }
 
-double PiControllerClass::GetSteering(){
+double PiContollerClass::getSteering(){
     return steering;
 }
 
-void PicontrollerClass::applyThrottle(double throttle){
+void PiContollerClass::applyThrottle(double throttle){
     switch (gearMode)
     {
     case 0: // P
@@ -113,7 +113,7 @@ void PicontrollerClass::applyThrottle(double throttle){
     return;
 }
 
-void PicontrollerClass::applySteering(double steering){
+void PiContollerClass::applySteering(double steering){
     switch (gearMode)
     {
     case 0: // P

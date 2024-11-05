@@ -14,11 +14,11 @@ PiControllerClass::~PiControllerClass(){
     Py_Finalize();
 }
 
-uint16_t PiControllerClass::getBattery()
+uint16_t PiControllerClass::getBatteryLevel()
 {
     pVoltage = PyObject_CallMethod(pInstance, "get_battery_voltage", NULL);
     voltageLevel = PyFloat_AsDouble(pVoltage);
-    batteryLevel = (uint16_t)A((voltageLevel - 2.8 * 3.0) / (12.3 - 2.8 * 3.0) * 100.0);
+    batteryLevel = (uint16_t)((voltageLevel - 2.8 * 3.0) / (12.3 - 2.8 * 3.0) * 100.0);
 
     return batteryLevel;
 }

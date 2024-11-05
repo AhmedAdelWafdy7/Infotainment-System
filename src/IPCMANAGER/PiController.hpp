@@ -23,22 +23,22 @@ class PiContollerClass
         PiContollerClass();
         ~PiContollerClass();
 
-        void SetSensorRpm(uint16_t _sensorRpm);
-        void SetGearMode(uint16_t _gearMode);
-        void SetDirection(uint16_t _direction);
-        void SetLight(std::string _light);
-        void SetFreeDirection(bool _freeDirection);
-        void SetSteering(double _steering);
+        void setSensorRpm(uint16_t _sensorRpm);
+        void setGearMode(uint16_t _gearMode);
+        void setDirection(uint16_t _direction);
+        void setLight(std::string _light);
+        void setFreeDirection(bool _freeDirection);
+        void setSteering(double _steering);
 
-        uint16_t GetSensorRpm();
-        uint16_t GetGearMode();
-        uint16_t GetDirection();
-        std::string GetLight();
-        bool GetFreeDirection();
-        double GetSteering();
+        uint16_t getSensorRpm();
+        uint16_t getGearMode();
+        uint16_t getDirection();
+        std::string getLight();
+        bool getFreeDirection();
+        double getSteering();
 
         void applyThrottle(double throttle);
         void applySteering(double steering);
-}
+};
 
 #endif // PICONTROLLER_HPP

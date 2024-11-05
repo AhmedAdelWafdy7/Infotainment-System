@@ -48,7 +48,7 @@ int open_port(const char *port)
         return -1;
     }
     addr.can_ifindex = ifr.ifr_ifindex;
-    fncntl(soc, F_SETFL, O_NONBLOCK);
+    fcntl(soc, F_SETFL, O_NONBLOCK);
 
     if (bind(soc, (struct sockaddr *)&addr, sizeof(addr)) < 0)
     {
