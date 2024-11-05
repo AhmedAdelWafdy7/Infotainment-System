@@ -24,7 +24,7 @@ Our goal is to build a sophisticated infotainment system in a vehicle-like envir
 
 1. Clone the repository:
     ```sh 
-    git clone https://github.com/yourusername/infotainment-system.git
+    git clone https://github.com/AhmedAdelWafdy7/Infotainment-System.git
     mkdir build && cd build
     cmake ..
     make
