@@ -204,7 +204,7 @@ add_executable(RemoteSpeaker
 target_link_libraries(RemoteSpeaker CommonAPI CommonAPI-SomeIP vsomeip3)
 
 
-set(CMAKE_PREFIX_PATH "/home/benwafdy/Qt_Desktop/5.15.17/gcc_64/lib/cmake")
+
 find_package(Qt5 COMPONENTS Core Quick Gui Multimedia 3DInput SerialBus 3DCore 3DRender 3DQuick REQUIRED)
 
 
@@ -229,3 +229,12 @@ target_link_libraries(HeadUnit
 PRIVATE Qt5::Core Qt5::Quick Qt5::Gui Qt5::Multimedia Qt5::3DInput Qt5::SerialBus 
         Qt5::3DCore Qt5::3DRender Qt5::3DQuick
         CommonAPI CommonAPI-SomeIP vsomeip3)
+
+install(TARGETS CANSender DESTINATION /usr/bin/pdc)
+install(TARGETS IVICompositor DESTINATION /usr/bin/pdc)
+install(TARGETS PiController DESTINATION /usr/bin/pdc)
+install(TARGETS RemoteSpeaker DESTINATION /usr/bin/pdc)
+install(TARGETS HeadUnit DESTINATION /usr/bin/pdc)
+install(TARGETS IPCManager DESTINATION /usr/bin/pdc)
+install(TARGETS PDCUnit DESTINATION /usr/bin/pdc)
+install(TARGETS PiSender DESTINATION /usr/bin/pdc)
