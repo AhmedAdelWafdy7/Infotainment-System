@@ -9,9 +9,6 @@ IPCManagerSenderClass::IPCManagerSenderClass(){
     PiControllerTargetProxy = runtime->buildProxy<PiControllerProxy>("local", "PiController"); // Build the proxy for PiController
     PiControllerSenderTargetProxy = runtime->buildProxy<PiSenderProxy>("local", "PiControllerSender"); // Build the proxy for PiControllerSender
     HeadUnitTargetProxy = runtime->buildProxy<HeadUnitProxy>("local", "HeadUnit"); // Build the proxy for HeadUnit
-    PDCUnitTargetProxy = runtime->buildProxy<PDCUnitProxy>("local", "PDCUnit"); // Build the proxy for PDCUnit
-    IVICompositerTargetProxy = runtime->buildProxy<IVICompositorProxy>("local", "IVICompositer"); // Build the proxy for IVICompositer
-    RemoteSpeakerTargetProxy = runtime->buildProxy<RemoteSpeakerProxy>("local", "RemoteSpeaker"); // Build the proxy for RemoteSpeaker
 }
 
 IPCManagerSenderClass::~IPCManagerSenderClass(){

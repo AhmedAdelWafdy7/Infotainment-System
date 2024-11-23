@@ -31,8 +31,6 @@ void IPCManagerStubImpl::setGearMode(const std::shared_ptr<CommonAPI::ClientId> 
         piracer.setGearMode(_gearMode);
         
         sender.HeadUnitTargetProxy->setGear(_gearMode, sender.callStatus, sender.returnMessage);
-        sender.IVICompositerTargetProxy->setGear(_gearMode, sender.callStatus, sender.returnMessage);
-        sender.RemoteSpeakerTargetProxy->setGear(_gearMode, sender.callStatus, sender.returnMessage);
     }
 
     _reply("");
@@ -85,7 +83,7 @@ void IPCManagerStubImpl::setThrottle(const std::shared_ptr<CommonAPI::ClientId> 
 void IPCManagerStubImpl::setSteering(const std::shared_ptr<CommonAPI::ClientId> _client, double _steering, setSteeringReply_t _reply)
 {
     piracer.applySteering(_steering);
-    piracer.setSteering(_steering);
+
     
     // ==================================================
     
@@ -117,15 +115,6 @@ void IPCManagerStubImpl::setSteering(const std::shared_ptr<CommonAPI::ClientId> 
     return;
 }
 
-void IPCManagerStubImpl::setDistance(const std::shared_ptr<CommonAPI::ClientId> _client, uint16_t _distance, setDistanceReply_t _reply)
-{
-    sender.PDCUnitTargetProxy->setDistance(_distance, sender.callStatus, sender.returnMessage);
-    sender.RemoteSpeakerTargetProxy->setDistance(_distance, sender.callStatus, sender.returnMessage);
-    
-    _reply("");
-
-    return;
-}
 
 void IPCManagerStubImpl::getGearMode(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _input, getGearModeReply_t _reply)
 {
@@ -133,14 +122,6 @@ void IPCManagerStubImpl::getGearMode(const std::shared_ptr<CommonAPI::ClientId> 
     if (_input == "HeadUnit")
     {
         sender.HeadUnitTargetProxy->setGear(piracer.getGearMode(), sender.callStatus, sender.returnMessage);
-    }
-    else if (_input == "IVICompositor")
-    {
-        sender.IVICompositerTargetProxy->setGear(piracer.getGearMode(), sender.callStatus, sender.returnMessage);
-    }
-    else if (_input == "RemoteSpeaker")
-    {
-        sender.RemoteSpeakerTargetProxy->setGear(piracer.getGearMode(), sender.callStatus, sender.returnMessage);
     }
 
     _reply("");
@@ -167,18 +148,6 @@ void IPCManagerStubImpl::getLight(const std::shared_ptr<CommonAPI::ClientId> _cl
         sender.HeadUnitTargetProxy->setLight(piracer.getLight(), sender.callStatus, sender.returnMessage);
     }
 
-    _reply("");
-
-    return;
-}
-
-void IPCManagerStubImpl::getSteering(const std::shared_ptr<CommonAPI::ClientId> _client, std::string _input, getSteeringReply_t _reply)
-{    
-    if (_input == "PDCUnit")
-    {
-        sender.PDCUnitTargetProxy->setSteering(piracer.getSteering(), sender.callStatus, sender.returnMessage);
-    }
-    
     _reply("");
 
     return;

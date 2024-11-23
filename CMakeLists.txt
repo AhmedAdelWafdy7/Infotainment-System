@@ -15,13 +15,15 @@ find_package(PythonLibs REQUIRED)
 include_directories(${PYTHON_INCLUDE_DIRS})
 
 include_directories(
-    src-gen
-    ${CMAKE_INCLUDE_PATH}/CommonAPI-3.2
-    ${CMAKE_INCLUDE_PATH}
+    ~/build-commonapi/capicxx-core-runtime/include
+    ~/build-commonapi/capicxx-someip-runtime/include
+    ~/build-commonapi/vsomeip/interface
 )
 
 link_directories(
-    ${CMAKE_LIBRARY_PATH}
+    ~/build-commonapi/capicxx-core-runtime/build
+    ~/build-commonapi/capicxx-someip-runtime/build
+    ~/build-commonapi/vsomeip/build
 )
 
 include_directories(
@@ -66,8 +68,13 @@ include_directories(
     src-gen/PiSender/someip/common
     src-gen/PiSender/someip/proxy
     src-gen/PiSender/someip/stub
+    ${CMAKE_INCLUDE_PATH}/CommonAPI-3.2
+    ${CMAKE_INCLUDE_PATH}
 )
 
+link_directories(
+    ${CMAKE_LIBRARY_PATH}
+)
 
 set(SOMEIP_PROXY_PATH someip/proxy/v1/commonapi/)
 set(SOMEIP_DEPLOYMENT_PATH someip/common/v1/commonapi/)
@@ -144,8 +151,10 @@ add_executable(HeadUnit
 )
 target_compile_definitions(HeadUnit
 PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
+find_package(Qt5 COMPONENTS Core Quick Gui Multimedia 3DInput SerialBus 3DCore 3DRender 3DQuick REQUIRED)
 target_link_libraries(HeadUnit
-PRIVATE Qt5::Core Qt5::Quick Qt5::Gui Qt5::Multimedia
+PRIVATE Qt5::Core Qt5::Quick Qt5::Gui Qt5::Multimedia Qt5::3DInput Qt5::SerialBus 
+        Qt5::3DCore Qt5::3DRender Qt5::3DQuick
         CommonAPI CommonAPI-SomeIP vsomeip3)
 
 install(TARGETS HeadUnit DESTINATION /usr/bin/headunit)

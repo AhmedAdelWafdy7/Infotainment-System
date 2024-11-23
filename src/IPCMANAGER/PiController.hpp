@@ -17,8 +17,7 @@ class PiContollerClass
         uint16_t direction;
         std::string light;
         bool freeDirection;
-        double steering;
-
+ 
     public:
         PiContollerClass();
         ~PiContollerClass();
@@ -28,14 +27,12 @@ class PiContollerClass
         void setDirection(uint16_t _direction);
         void setLight(std::string _light);
         void setFreeDirection(bool _freeDirection);
-        void setSteering(double _steering);
 
         uint16_t getSensorRpm();
         uint16_t getGearMode();
         uint16_t getDirection();
         std::string getLight();
         bool getFreeDirection();
-        double getSteering();
 
         void applyThrottle(double throttle);
         void applySteering(double steering);

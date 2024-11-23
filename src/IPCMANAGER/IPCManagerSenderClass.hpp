@@ -7,9 +7,7 @@
 #include <v1/commonapi/PiControllerProxy.hpp>
 #include <v1/commonapi/PiSenderProxy.hpp>
 #include <v1/commonapi/HeadUnitProxy.hpp>
-#include <v1/commonapi/PDCUnitProxy.hpp>
-#include <v1/commonapi/IVICompositorProxy.hpp>
-#include <v1/commonapi/RemoteSpeakerProxy.hpp>
+
 
 using namespace v1_0::commonapi;
 
@@ -23,9 +21,6 @@ class IPCManagerSenderClass {
         std::shared_ptr<PiControllerProxy<>> PiControllerTargetProxy;
         std::shared_ptr<PiSenderProxy<>> PiControllerSenderTargetProxy;
         std::shared_ptr<HeadUnitProxy<>> HeadUnitTargetProxy;
-        std::shared_ptr<PDCUnitProxy<>> PDCUnitTargetProxy;
-        std::shared_ptr<IVICompositorProxy<>> IVICompositerTargetProxy;
-        std::shared_ptr<RemoteSpeakerProxy<>> RemoteSpeakerTargetProxy;
 
         CommonAPI::CallStatus callStatus;
         std::string returnMessage;        

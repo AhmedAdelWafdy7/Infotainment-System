@@ -11,7 +11,6 @@ PiContollerClass::PiContollerClass(){
     direction = 0;
     light = "#808080";
     freeDirection = false;
-    steering = 0.0;
 }
 
 PiContollerClass::~PiContollerClass(){
@@ -51,11 +50,7 @@ void PiContollerClass::setFreeDirection(bool _freeDirection){
     return;
 }
 
-void PiContollerClass::setSteering(double _steering){
-    steering = _steering;
 
-    return;
-}
 
 uint16_t PiContollerClass::getSensorRpm(){
     return sensorRpm;
@@ -77,9 +72,7 @@ bool PiContollerClass::getFreeDirection(){
     return freeDirection;
 }
 
-double PiContollerClass::getSteering(){
-    return steering;
-}
+
 
 void PiContollerClass::applyThrottle(double throttle){
     switch (gearMode)
