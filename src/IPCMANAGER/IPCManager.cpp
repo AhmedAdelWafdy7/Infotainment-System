@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <CommonAPI/CommonAPI.hpp>
-#include "IPCManagerStublmpl.hpp"
+#include "IPCManagerStubImpl.hpp"
 #include "IPCManagerSenderClass.hpp"
 
 using namespace v1_0::commonapi;

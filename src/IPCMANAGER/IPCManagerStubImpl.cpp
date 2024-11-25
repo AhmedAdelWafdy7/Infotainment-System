@@ -1,4 +1,4 @@
-#include "IPCManagerStublmpl.hpp"
+#include "IPCManagerStubImpl.hpp"
 
 
 

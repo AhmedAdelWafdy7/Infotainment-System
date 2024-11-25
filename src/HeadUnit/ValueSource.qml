@@ -4,12 +4,12 @@ Item {
     id: valueSource
 
 
-
+/*
     HeadUnitQtClass{
         id: manager
     }
 
-
+*/
     property int speed: carinfo.speed
     property int rpm: carinfo.rpm
     property int battery: carinfo.battery
