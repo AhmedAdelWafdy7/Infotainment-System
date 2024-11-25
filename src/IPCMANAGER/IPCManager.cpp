@@ -15,25 +15,6 @@ int main() {
     IPCManagerSenderClass sender;
     int exitCode;
     while(1){
-        if(!sender.CANSenderTargetProxy->isAvailable()){
-            exitCode = system("sh ../reboot_script/reboot_can_sender.sh");        
-        }
-        if(!sender.PiControllerTargetProxy->isAvailable()){
-            exitCode = system("sh ../reboot_script/reboot_pi_controller.sh");
-        }
-        if(!sender.PiControllerSenderTargetProxy->isAvailable()){
-            exitCode = system("sh ../reboot_script/reboot_pi_controller_sender.sh");
-        }
-        if(!sender.HeadUnitTargetProxy->isAvailable()){
-            exitCode = system("sh ../reboot_script/reboot_head_unit.sh");
-        }
-        if(!sender.PDCUnitTargetProxy->isAvailable()){
-            exitCode = system("sh ../reboot_script/reboot_pdc_unit.sh");
-        }
-        if(!sender.IVICompositerTargetProxy->isAvailable()){
-            exitCode = system("sh ../reboot_script/reboot_ivi_compositer.sh");
-        }
-
         usleep(1000000);
 
     }
