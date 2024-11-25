@@ -137,7 +137,7 @@ target_link_libraries(PiController ${PYTHON_LIBRARIES} CommonAPI CommonAPI-SomeI
 
 add_executable(IPCManager
     src/IPCMANAGER/IPCManager.cpp
-    src/IPCMANAGER/IPCManagerStublmpl.cpp
+    src/IPCMANAGER/IPCManagerStubImpl.cpp
     src/IPCMANAGER/IPCManagerSenderClass.cpp
     src/IPCMANAGER/PiController.cpp    
     src-gen/CANSender/${SOMEIP_PROXY_PATH}/CANSenderSomeIPProxy.cpp
