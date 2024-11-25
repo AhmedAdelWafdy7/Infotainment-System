@@ -22,6 +22,7 @@ class IPCManagerSenderClass {
         std::shared_ptr<PiSenderProxy<>> PiControllerSenderTargetProxy;
         std::shared_ptr<HeadUnitProxy<>> HeadUnitTargetProxy;
 
+
         CommonAPI::CallStatus callStatus;
         std::string returnMessage;        
 };
