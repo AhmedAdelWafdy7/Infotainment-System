@@ -15,9 +15,7 @@ Window {
     title: qsTr("Head Unit")
 
 
-    HeadUnitQtClass {
-        id: manager
-    }
+    
     
     property alias font: font
 

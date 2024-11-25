@@ -5,10 +5,7 @@ Item {
 
 
 
-    HeadUnitQtClass{
-        id: manager
-    }
-
+   
 
     property int speed: carinfo.speed
     property int rpm: carinfo.rpm
