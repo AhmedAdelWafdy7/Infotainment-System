@@ -136,6 +136,9 @@ target_link_libraries(IPCManager ${PYTHON_LIBRARIES} CommonAPI CommonAPI-SomeIP 
 
 add_executable(HeadUnit
         src/HeadUnit/HeadUnit.cpp
+        src/HeadUnit/HeadUnitStubImpl.cpp
+        src/HeadUnit/HeadUnitQtClass.cpp
+        src/HeadUnit/HeadUnitSenderClass.cpp
         src/HeadUnit/InstrumentClusterStubImpl.cpp
         src/HeadUnit/InstrumentClusterQtClass.cpp
         src/HeadUnit/InstrumentClusterSenderClass.cpp
