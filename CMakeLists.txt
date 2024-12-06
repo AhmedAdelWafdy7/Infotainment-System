@@ -210,6 +210,9 @@ find_package(Qt5 COMPONENTS Core Quick Gui Multimedia 3DInput SerialBus 3DCore 3
 
 add_executable(HeadUnit
         src/HeadUnit/HeadUnit.cpp
+        src/HeadUnit/HeadUnitStubImpl.cpp
+        src/HeadUnit/HeadUnitQtClass.cpp
+        src/HeadUnit/HeadUnitSenderClass.cpp
         src/HeadUnit/InstrumentClusterStubImpl.cpp
         src/HeadUnit/InstrumentClusterQtClass.cpp
         src/HeadUnit/InstrumentClusterSenderClass.cpp

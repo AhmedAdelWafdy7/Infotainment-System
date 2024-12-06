@@ -14,11 +14,9 @@ Window {
     visible: true
     title: qsTr("Head Unit")
 
-    /*
-    HeadUnitQtClass {
-        id: manager
-    }
-   */ 
+
+    
+    
     property alias font: font
 
     StackView {

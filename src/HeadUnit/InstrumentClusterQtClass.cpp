@@ -73,4 +73,4 @@ void InstrumentClusterQtClass::setLight(QString _light)
     emit lightChanged();
 }
 
-InstrumentClusterQtClass carinfo;
+InstrumentClusterQtClass instrumentClusterCarInfo;

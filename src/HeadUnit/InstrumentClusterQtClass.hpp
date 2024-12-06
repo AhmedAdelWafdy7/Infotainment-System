@@ -54,6 +54,6 @@ signals:
     void lightChanged();
 };
 
-extern InstrumentClusterQtClass carinfo;
+extern InstrumentClusterQtClass instrumentClusterCarInfo;
 
 #endif

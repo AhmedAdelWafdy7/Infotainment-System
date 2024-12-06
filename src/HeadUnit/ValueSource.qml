@@ -4,18 +4,15 @@ Item {
     id: valueSource
 
 
-/*
-    HeadUnitQtClass{
-        id: manager
-    }
 
-*/
-    property int speed: carinfo.speed
-    property int rpm: carinfo.rpm
-    property int battery: carinfo.battery
+   
 
-    property int gear: carinfo.gear
-    property int direction: carinfo.direction
+    property int speed: carinfoI.speed
+    property int rpm: carinfoI.rpm
+    property int battery: carinfoI.battery
+
+    property int gear: carinfoH.gear
+    property int direction: carinfoH.direction
 
     property bool blink: !(valueSource.direction === 0)
     property bool left_direction: (valueSource.direction === 1 || valueSource.direction === 3)
