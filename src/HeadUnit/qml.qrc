@@ -1,0 +1,111 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/CenterStack.qml</file>
+        <file>qml/CircularGaugeBasic.qml</file>
+        <file>qml/DashboardModel.qml</file>
+        <file>qml/DashboardView.qml</file>
+        <file>qml/IconButton.qml</file>
+        <file>font/fontawesome.otf</file>
+        <file>image/shade.png</file>
+        <file>image/Speedometer.png</file>
+        <file>image/SportCarFloorShadow.png</file>
+        <file>image/Tacometer.png</file>
+        <file>image/Top Bar.png</file>
+        <file>image/tr.jpg</file>
+        <file>icons/icons-left/icon-park-solid_right-two.svg</file>
+        <file>icons/icons-left/mdi_car-battery.svg</file>
+        <file>icons/icons-left/mdi_car-handbrake.svg</file>
+        <file>icons/icons-left/mdi_car-tire-alert.svg</file>
+        <file>icons/icons-left/mdi_oil.svg</file>
+        <file>icons/icons-left/ph_engine-bold.svg</file>
+        <file>icons/icons-left-checked/icon-park-solid_right-two.svg</file>
+        <file>icons/icons-left-checked/mdi_car-battery.svg</file>
+        <file>icons/icons-left-checked/mdi_car-handbrake.svg</file>
+        <file>icons/icons-left-checked/mdi_car-tire-alert.svg</file>
+        <file>icons/icons-left-checked/mdi_oil.svg</file>
+        <file>icons/icons-left-checked/ph_engine-bold.svg</file>
+        <file>icons/icons-right/icon-park-solid_right-two.svg</file>
+        <file>icons/icons-right/mdi_car-brake-parking.svg</file>
+        <file>icons/icons-right/mdi_car-light-dimmed.svg</file>
+        <file>icons/icons-right/mdi_car-light-fog.svg</file>
+        <file>icons/icons-right/mdi_car-light-high.svg</file>
+        <file>icons/icons-right/mdi_seatbelt.svg</file>
+        <file>icons/icons-right-checked/icon-park-solid_right-two.svg</file>
+        <file>icons/icons-right-checked/mdi_car-brake-parking.svg</file>
+        <file>icons/icons-right-checked/mdi_car-light-dimmed.svg</file>
+        <file>icons/icons-right-checked/mdi_car-light-fog.svg</file>
+        <file>icons/icons-right-checked/mdi_car-light-high.svg</file>
+        <file>icons/icons-right-checked/mdi_seatbelt.svg</file>
+        <file>icons/Road/car.png</file>
+        <file>icons/Road/carRoad.svg</file>
+        <file>icons/Road/Frame 33.png</file>
+        <file>icons/Road/mdi_clock-time-four-outline.svg</file>
+        <file>icons/Road/mdi_map-marker-outline.svg</file>
+        <file>icons/Road/mdi_turn-right-bold.svg</file>
+        <file>icons/Road/road.png</file>
+        <file>icons/Road/road2.png</file>
+        <file>icons/Road/road3.svg</file>
+        <file>icons/bottom.png</file>
+        <file>icons/cloud.svg</file>
+        <file>icons/right.svg</file>
+        <file>icons/Vector 1.png</file>
+        <file>icons/Vector 1.svg</file>
+        <file>icons/Vector 2.png</file>
+        <file>icons/Vector 2.svg</file>
+        <file>qml/ValueSource.qml</file>
+        <file>image/background.jpg</file>
+        <file>qml/SpeedGauageStyle.qml</file>
+        <file>qml/RPMGauageStyle.qml</file>
+        <file>font/Nebula-Regular.otf</file>
+        <file>Infotainment/assets/icons/arrows.png</file>
+        <file>Infotainment/assets/icons/battery.png</file>
+        <file>Infotainment/assets/icons/bluethooth.png</file>
+        <file>Infotainment/assets/icons/clapperboard.png</file>
+        <file>Infotainment/assets/icons/clapperboard2.png</file>
+        <file>Infotainment/assets/icons/dslr-camera.png</file>
+        <file>Infotainment/assets/icons/Headlight2.svg</file>
+        <file>Infotainment/assets/icons/Headlights.svg</file>
+        <file>Infotainment/assets/icons/icons.svg</file>
+        <file>Infotainment/assets/icons/message.png</file>
+        <file>Infotainment/assets/icons/phone-call.png</file>
+        <file>Infotainment/assets/icons/Property 1=Default.svg</file>
+        <file>Infotainment/assets/icons/radio.png</file>
+        <file>Infotainment/assets/icons/Seatbelt.svg</file>
+        <file>Infotainment/assets/icons/sedan-car-front.png</file>
+        <file>Infotainment/assets/icons/spotify.png</file>
+        <file>Infotainment/assets/icons/telephone-call.png</file>
+        <file>Infotainment/assets/icons/video.png</file>
+        <file>Infotainment/assets/icons/zoom.png</file>
+        <file>Infotainment/assets/carRender.jpg</file>
+        <file>Infotainment/assets/destination.gif</file>
+        <file>Infotainment/assets/electric-car.png</file>
+        <file>Infotainment/assets/focus.png</file>
+        <file>Infotainment/assets/calendar.png</file>
+        <file>Infotainment/assets/camera.png</file>
+        <file>Infotainment/assets/spotify.png</file>
+        <file>Infotainment/assets/marker_blue.png</file>
+        <file>Infotainment/assets/icons8-current-location-64.png</file>
+        <file>Infotainment/assets/magnifying-glass.png</file>
+        <file>Infotainment/assets/mute.png</file>
+        <file>Infotainment/assets/open-padlock-silhouette.png</file>
+        <file>Infotainment/assets/padlock.png</file>
+        <file>Infotainment/assets/volume-high.png</file>
+        <file>Infotainment/assets/volume-low.png</file>
+        <file>Infotainment/Parts/BottomBar/BottomBar.qml</file>
+        <file>Infotainment/Parts/BottomBar/HVAC.qml</file>
+        <file>Infotainment/Parts/BottomBar/VolumeControl.qml</file>
+        <file>Infotainment/Parts/Icons/Icon.qml</file>
+        <file>Infotainment/Parts/Icons/IconButton.qml</file>
+        <file>Infotainment/Parts/Icons/LaunchButton.qml</file>
+        <file>Infotainment/Parts/Icons/LaunchPad.qml</file>
+        <file>Infotainment/Parts/LeftScreen/LeftScreen.qml</file>
+        <file>Infotainment/Parts/RightScreen/NavigationScreenHelper.qml</file>
+        <file>Infotainment/Parts/RightScreen/NavigationSearchBox.qml</file>
+        <file>Infotainment/Parts/RightScreen/RightScreen.qml</file>
+        <file>Infotainment/Parts/Theme.qml</file>
+        <file>Infotainment/infotainment.qml</file>
+        <file>Infotainment/LayoutManager.js</file>
+        <file>Infotainment/assets/icons/speedometer-svgrepo-com.svg</file>
+    </qresource>
+</RCC>
