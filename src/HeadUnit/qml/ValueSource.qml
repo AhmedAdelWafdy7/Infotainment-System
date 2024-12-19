@@ -1,19 +1,17 @@
 import QtQuick 2.2
+import DataModule 1.0
 
 Item {
     id: valueSource
 
+    HeadUnitQtClass {
+        id: manager
+    }
 
+    property int gear: carinfo.gear
+    property int direction: carinfo.direction
 
-   
-
-    property int speed: carinfoI.speed
-    property int rpm: carinfoI.rpm
-    property int battery: carinfoI.battery
-
-    property int gear: carinfoH.gear
-    property int direction: carinfoH.direction
-
+    // Properties for controlling blinking and direction indicators
     property bool blink: !(valueSource.direction === 0)
     property bool left_direction: (valueSource.direction === 1 || valueSource.direction === 3)
     property bool right_direction: (valueSource.direction === 2 || valueSource.direction === 3)
@@ -30,53 +28,25 @@ Item {
         valueSource.initial_delay = !(valueSource.direction === 0)
     }
 
-
-    Behavior on speed {
-        NumberAnimation {
-            target: valueSource
-            property: "speed"
-            easing.type: Easing.InOutSine
-            duration: 500
-        }
-    }
-
-    Behavior on rpm {
-        NumberAnimation {
-            target: valueSource
-            property: "rpm"
-            easing.type: Easing.InOutSine
-            duration: 500
-        }
-    }
-    Behavior on battery {
-        NumberAnimation {
-            target: valueSource
-            property: "battery"
-            easing.type: Easing.InOutSine
-            duration: 500
-        }
-    }
-
     function blinking() {
         if (valueSource.left_direction) {
-            valueSource.left_on_off = !valueSource.left_on_off;
+            valueSource.left_on_off = !valueSource.left_on_off
         }
         if (valueSource.right_direction) {
-            valueSource.right_on_off = !valueSource.right_on_off;
+            valueSource.right_on_off = !valueSource.right_on_off
         }
     }
 
     Timer {
         interval: 500; running: valueSource.blink; repeat: true
         onTriggered: {
-            if(valueSource.initial_delay){
+            if (valueSource.initial_delay) {
                 valueSource.initial_delay = false
-            }else {
+            } else {
                 valueSource.blinking()
             }
         }
     }
-
 
     property string light: carinfo.light
     property int red: 0
@@ -94,7 +64,28 @@ Item {
         }
     }
 
+    property string red_string: ""
+    property string green_string: ""
+    property string blue_string: ""
 
+    property int mode: 0
 
+    property var currentTime: 0
+    property int hours: 0
+    property int minutes: 0
+    property string formattedHours: ""
+    property string formattedMinutes: ""
+    property string clock: "00:00"
 
+    Timer {
+        interval: 1000; running: true; repeat: true
+        onTriggered: {
+            valueSource.currentTime = new Date();
+            valueSource.hours = valueSource.currentTime.getHours();
+            valueSource.minutes = valueSource.currentTime.getMinutes();
+            valueSource.formattedHours = (valueSource.hours < 10 ? "0" : "") + valueSource.hours;
+            valueSource.formattedMinutes = (valueSource.minutes < 10 ? "0" : "") + valueSource.minutes;
+            valueSource.clock = valueSource.formattedHours + ":" + valueSource.formattedMinutes;
+        }
+    }
 }

@@ -8,9 +8,9 @@ CircularGaugeBasic {
     minorTickmarkCount: 4
 
     labelStepSize: 50
-    labelInset: 45
+    labelInset: 28
 
-    needleLength: 165
+    needleLength: 210
     needleBaseWidth: 10
     needleTipWidth: 1
 
@@ -22,7 +22,7 @@ CircularGaugeBasic {
 
     minorTickmark: Rectangle {
         implicitWidth: 2
-        implicitHeight: 7
+        implicitHeight: 8
         color: "white"
     }
     background: Canvas{

@@ -129,7 +129,7 @@ Page {
                                     Image {
                                         width: adaptive.width(50) * (map.zoomLevel / 17)
                                         height: adaptive.height(50) *  (map.zoomLevel / 17)
-                                        source: "qrc:/Infotainment/assets/location-pin.png"
+                                        source: "qrc:/Infotainment/assets/marker_blue.png"
                                         anchors.centerIn: parent
                                     }
                                 }
