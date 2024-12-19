@@ -30,13 +30,13 @@ Popup {
 
             LaunchButton {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                icon.source: "qrc:/Infotainment/assets/icons/camera.png"
+                icon.source: "qrc:/Infotainment/assets/camera.png"
                 text:  "Camera"
             }
 
             LaunchButton {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                icon.source: "qrc:/Infotainment/assets/icons/calendar.png"
+                icon.source: "qrc:/Infotainment/assets/calendar.png"
                 text:  "Calender"
             }
 
@@ -68,7 +68,7 @@ Popup {
 
             LaunchButton {
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-                icon.source: "qrc:/Infotainment/assets/icons/spotify.png"
+                icon.source: "qrc:/Infotainment/assets/spotify.png"
                 text:  "Spotify"
             }
 

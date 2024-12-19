@@ -3,53 +3,52 @@
 #include <QQmlContext>
 #include <QCursor>
 
-#include "scenehelper.h"
+#include "HeadUnitStubImpl.hpp"
+#include "HeadUnitQtClass.hpp"
+#include "HeadUnitSenderClass.hpp"
+
 #include "Infotainment/control/hvachandler.h"
 #include "Infotainment/control/audiocontroller.h"
 #include "Infotainment/control/system.h"
-#include "InstrumentClusterStubImpl.hpp"
-#include "InstrumentClusterQtClass.hpp"
-#include "InstrumentClusterSenderClass.hpp"
 
 using namespace v1_0::commonapi;
 
-
 int main(int argc, char *argv[])
 {
-
     std::shared_ptr<CommonAPI::Runtime> runtime;
-    std::shared_ptr<InstrumentClusterStubImpl> InstrumentClusterService;
+    std::shared_ptr<HeadUnitStubImpl> HeadUnitService;
 
     runtime = CommonAPI::Runtime::get();
-    InstrumentClusterService = std::make_shared<InstrumentClusterStubImpl>();
-    runtime->registerService("local", "InstrumentCluster", InstrumentClusterService);
+    HeadUnitService = std::make_shared<HeadUnitStubImpl>();
+    runtime->registerService("local", "HeadUnit", HeadUnitService);
 
-
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
     QGuiApplication app(argc, argv);
-    qmlRegisterType<scenehelper>("Qt3D.Examples", 2, 0, "SceneHelper");
+    
+    QCursor cursor(Qt::BlankCursor);
+    app.setOverrideCursor(cursor);
+    
+    qmlRegisterType<HeadUnitQtClass>("DataModule", 1, 0, "HeadUnitQtClass");
 
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("carinfo", &carinfo);
+
 
     System m_system_handler;
     HVACHandler m_driverHVACHandler;
     HVACHandler m_passengerHVACHandler;
     AudioController m_audioController;
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(
-        &engine,
-        &QQmlApplicationEngine::objectCreated,
-        &app,
-        [url](QObject *obj, const QUrl &objUrl) {
-            if (!obj && url == objUrl)
-                QCoreApplication::exit(-1);
-        },
-        Qt::QueuedConnection);
+    const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
+
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+    &app, [url](QObject *obj, const QUrl &objUrl)
+    {
+        if (!obj && url == objUrl)
+            QCoreApplication::exit(-1);
+    }, Qt::QueuedConnection);
+
     engine.load(url);
 
     QQmlContext *context (engine.rootContext());
@@ -58,12 +57,11 @@ int main(int argc, char *argv[])
     context->setContextProperty( "driverHVAC" , &m_driverHVACHandler);
     context->setContextProperty( "passengerHVAC" , &m_passengerHVACHandler);
     context->setContextProperty( "audioController" , &m_audioController);
-
-
-    InstrumentClusterSenderClass sender;
-    sender.IPCManagerTargetProxy->getGearMode("InstrumentCluster", sender.callStatus, sender.returnMessage);
-    sender.IPCManagerTargetProxy->getDirection("InstrumentCluster", sender.callStatus, sender.returnMessage);
-    sender.IPCManagerTargetProxy->getLight("InstrumentCluster", sender.callStatus, sender.returnMessage);
+    
+    HeadUnitSenderClass sender;
+    sender.IPCManagerTargetProxy->getGearMode("HeadUnit", sender.callStatus, sender.returnMessage);
+    sender.IPCManagerTargetProxy->getDirection("HeadUnit", sender.callStatus, sender.returnMessage);
+    sender.IPCManagerTargetProxy->getLight("HeadUnit", sender.callStatus, sender.returnMessage);
 
     return app.exec();
 }
