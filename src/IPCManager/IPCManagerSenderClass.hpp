@@ -7,9 +7,7 @@
 #include <v1/commonapi/PiracerSenderProxy.hpp>
 #include <v1/commonapi/PiracerControllerProxy.hpp>
 #include <v1/commonapi/HeadUnitProxy.hpp>
-#include <v1/commonapi/PDCUnitProxy.hpp>
-#include <v1/commonapi/IVICompositorProxy.hpp>
-#include <v1/commonapi/RemoteSpeakerProxy.hpp>
+
 
 using namespace v1_0::commonapi;
 
@@ -24,9 +22,7 @@ public:
     std::shared_ptr<PiracerSenderProxy<>> PiracerSenderTargetProxy;
     std::shared_ptr<PiracerControllerProxy<>> PiracerControllerTargetProxy;
     std::shared_ptr<HeadUnitProxy<>> HeadUnitTargetProxy;
-    std::shared_ptr<PDCUnitProxy<>> PDCUnitTargetProxy;
-    std::shared_ptr<IVICompositorProxy<>> IVICompositorTargetProxy;
-    std::shared_ptr<RemoteSpeakerProxy<>> RemoteSpeakerTargetProxy;
+
 
     CommonAPI::CallStatus callStatus;
     std::string returnMessage;

@@ -10,9 +10,7 @@ IPCManagerSenderClass::IPCManagerSenderClass()
     PiracerSenderTargetProxy = runtime->buildProxy<PiracerSenderProxy>("local", "PiracerSender");
     PiracerControllerTargetProxy = runtime->buildProxy<PiracerControllerProxy>("local", "PiracerController");
     HeadUnitTargetProxy = runtime->buildProxy<HeadUnitProxy>("local", "HeadUnit");
-    PDCUnitTargetProxy = runtime->buildProxy<PDCUnitProxy>("local", "PDCUnit");
-    IVICompositorTargetProxy = runtime->buildProxy<IVICompositorProxy>("local", "IVICompositor");
-    RemoteSpeakerTargetProxy = runtime->buildProxy<RemoteSpeakerProxy>("local", "RemoteSpeaker");
+
 }
  
 IPCManagerSenderClass::~IPCManagerSenderClass() { }
