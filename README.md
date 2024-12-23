@@ -10,12 +10,12 @@ Our goal is to build a sophisticated infotainment system in a vehicle-like envir
 
 The implementation of the head unit Qt application on the RPi alongside the instrument cluster app will require the integration of various components, including the use of Yocto as the primary operating system image. The following steps should be taken during the implementation phase:
 
-    - Installation of Yocto on the RPi and setup of the necessary tools and dependencies.
-    - Development of the head unit Qt application and its integration with the instrument cluster app. This will include the implementation of features such as ambient lighting, gear selection, and media app.
-    - Communication between the head unit and the instrument cluster app will be established using IPC such as vsomeip/autosar.
-    - The head unit will receive speed data from the speed sensor via CAN, and this data will be processed and displayed on the head unit's display.
-    - Testing and debugging of the entire system to ensure it meets the technical requirements and operates as expected.
-    - Final integration and deployment of the head unit and instrument cluster app on the RPi, ready for use in a real-world automotive environment.
+- Installation of Yocto on the RPi and setup of the necessary tools and dependencies.
+- Development of the head unit Qt application and its integration with the instrument cluster app. This will include the implementation of features such as ambient lighting, gear selection, and media app.
+- Communication between the head unit and the instrument cluster app will be established using IPC such as vsomeip/autosar.
+- The head unit will receive speed data from the speed sensor via CAN, and this data will be processed and displayed on the head unit's display.
+- Testing and debugging of the entire system to ensure it meets the technical requirements and operates as expected.
+- Final integration and deployment of the head unit and instrument cluster app on the RPi, ready for use in a real-world automotive environment.
 
 ![HeadUnit1](media/HeadUnit1.png)
 
